@@ -12,6 +12,22 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "viewsConatiners": {
+      "activitybar": [
+        {
+          "id": "novel-file-view",
+          "title": "Novel File View"
+        }
+      ]
+    },
+    "views": {
+      "novel-file-view": [
+        {
+          "id": "novel-file-view",
+          "name": "Novel File View"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "pixiv-novel-helper.openPixiv",
