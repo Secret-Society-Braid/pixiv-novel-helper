@@ -14,8 +14,44 @@
   "contributes": {
     "commands": [
       {
-        "command": "pixiv-novel-helper.helloWorld",
-        "title": "Hello World"
+        "command": "pixiv-novel-helper.openPixiv",
+        "title": "Open Pixiv home page"
+      },
+      {
+        "command": "pixiv-novel.helper.openPixivDashBoardHome",
+        "title": "Open Pixiv Dashboard home"
+      },
+      {
+        "command": "pixiv-novel-helper.openPixivDashBoardAllHome",
+        "title": "Open Pixiv Dashboard all home"
+      },
+      {
+        "command": "pixiv-novel-helper.openPixivDashBoardAllSeries",
+        "title": "Open Pixiv Dashboard all series"
+      },
+      {
+        "command": "pixiv-novel-helper.openPixivDashBoardAllDrafts",
+        "title": "Open Pixiv Dashboard all drafts"
+      },
+      {
+        "command": "pixiv-novel-helper.openPixivDashBoardIllustrationsHome",
+        "title": "Open Pixiv Dashboard illustrations home"
+      },
+      {
+        "command": "pixiv-novel-helper.openPixivDashBoardNovelsHome",
+        "title": "Open Pixiv Dashboard novels home"
+      },
+      {
+        "command": "pixiv-novel-helper.openPixivDashBoardNovelsSeries",
+        "title": "Open Pixiv Dashboard novels series"
+      },
+      {
+        "command": "pixiv-novel-helper.openPixivDashBoardNovelsDrafts",
+        "title": "Open Pixiv Dashboard novels drafts"
+      },
+      {
+        "command": "pixiv-novel-helper.openPixivRequestHome",
+        "title": "Open Pixiv request home"
       }
     ]
   },
