@@ -50,6 +50,12 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.env.openExternal(vscode.Uri.parse(location.construct( { relativePath: [ 'manage', 'requests' ] } )));
 	});
 
+	// open pixiv upload page
+
+	const openPixivUploadPage = vscode.commands.registerCommand('pixiv-novel-helper.openPixivUploadPage', () => {
+		vscode.env.openExternal(vscode.Uri.parse(location.construct( { relativePath: [ 'upload.php' ] } )));
+	});
+
 	// register to the subscriptions
 	context.subscriptions.push(
 		openPixivCommand,

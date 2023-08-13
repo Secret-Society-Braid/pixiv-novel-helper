@@ -52,6 +52,10 @@
       {
         "command": "pixiv-novel-helper.openPixivRequestHome",
         "title": "Open Pixiv request home"
+      },
+      {
+        "command": "pixiv-novel-helper.openPixivUploadPage",
+        "title": "Open Pixiv upload page"
       }
     ]
   },
