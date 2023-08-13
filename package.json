@@ -23,7 +23,7 @@
     "views": {
       "novel-file-view": [
         {
-          "id": "novel-file-view",
+          "id": "novel-view",
           "name": "Novel File View"
         }
       ]

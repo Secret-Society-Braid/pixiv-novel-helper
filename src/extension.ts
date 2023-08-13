@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import Location from './features/Location';
+import {NovelTreeItemProvider} from "./features/trees";
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -70,6 +71,8 @@ export function activate(context: vscode.ExtensionContext) {
 		openPixivRequestHome,
 		openPixivUploadPage
 	);
+	// register tree view
+	vscode.window.registerTreeDataProvider('novel-view', new NovelTreeItemProvider());
 }
 
 export function deactivate() {}
