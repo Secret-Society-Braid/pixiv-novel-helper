@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import Location from './features/Location';
+import {CharacterCount, CharacterCounterController} from "./features/characterCount";
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -56,6 +57,9 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.env.openExternal(vscode.Uri.parse(location.construct( { relativePath: [ 'novel', 'upload.php' ] } )));
 	});
 
+	const characterCount = new CharacterCount();
+	const controller = new CharacterCounterController(characterCount);
+
 	// register to the subscriptions
 	context.subscriptions.push(
 		openPixivCommand,
@@ -68,7 +72,10 @@ export function activate(context: vscode.ExtensionContext) {
 		openPixivDashBoardNovelsSeries,
 		openPixivDashBoardNovelsDrafts,
 		openPixivRequestHome,
-		openPixivUploadPage
+		openPixivUploadPage,
+		// character count
+		controller,
+		characterCount
 	);
 }
 
