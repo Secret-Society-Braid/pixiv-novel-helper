@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import Location from './Location';
+import Location from './features/Location';
 
 export function activate(context: vscode.ExtensionContext) {
 
