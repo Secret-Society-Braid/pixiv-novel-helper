@@ -31,7 +31,9 @@ export class CharacterCount {
       doc.languageId === "pixiv.novel.text"
     ) {
       const characterCount = this._getCharacterCount(doc);
-      this._statueBarItem.text = `$(pencil) ${characterCount} 文字/上限まであと: ${this._characterLimit - characterCount} 文字`;
+      this._statueBarItem.text = `$(pencil) ${characterCount} 文字 / 上限まであと: ${
+        this._characterLimit - characterCount
+      } 文字`;
       this._noticeCharacterLimitReaching(characterCount);
       this._statueBarItem.show();
     } else {
@@ -51,27 +53,37 @@ export class CharacterCount {
   }
 
   private _noticeCharacterLimitReaching(curr: number): void {
-    if(this._characterLimit < curr) {
-      window.showWarningMessage("文字数制限に掛かっています。このファイルをそのままコピーして投稿することはできない可能性があります。");
+    if (this._characterLimit < curr) {
+      window.showWarningMessage(
+        "文字数制限に掛かっています。このファイルをそのままコピーして投稿することはできない可能性があります。"
+      );
       return;
     }
-    if(this._suppressLimitNotice) {return;}
-    if(this._characterLimit - curr < 1000) {
-      window.showInformationMessage(
-        "執筆おつかれさまです。もうすぐで文字数制限に掛かりそうです。これ以上続ける場合は作品の分割をおすすめします。",
-        "通知を止める",
-        "このまま執筆を続ける"
-      ).then((choice) => {
-        switch (choice) {
-          case "通知を止める":
-            this._suppressLimitNotice = true;
-            window.showInformationMessage("了解しました。このセッション中は通知を停止します。");
-            break;
-          case "このまま執筆を続ける":
-            window.showInformationMessage("了解しました。執筆がんばってください！");
-            break;
-        }
-      });
+    if (this._suppressLimitNotice) {
+      return;
+    }
+    if (this._characterLimit - curr < 1000) {
+      window
+        .showInformationMessage(
+          "執筆おつかれさまです。もうすぐで文字数制限に掛かりそうです。これ以上続ける場合は作品の分割をおすすめします。",
+          "通知を止める",
+          "このまま執筆を続ける"
+        )
+        .then((choice) => {
+          switch (choice) {
+            case "このまま執筆を続ける":
+              window.showInformationMessage(
+                "了解しました。執筆がんばってください！"
+              );
+              break;
+            case "通知を止める":
+              this._suppressLimitNotice = true;
+              window.showInformationMessage(
+                "了解しました。このセッション中は通知を停止します。"
+              );
+              break;
+          }
+        });
     }
   }
 }
@@ -99,5 +111,4 @@ export class CharacterCounterController {
   public dispose(): void {
     this._disposable.dispose();
   }
-
 }
