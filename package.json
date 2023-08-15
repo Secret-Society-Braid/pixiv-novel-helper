@@ -59,6 +59,23 @@
         "command": "pixiv-novel-helper.openPixivUploadPage",
         "title": "Open Pixiv upload page"
       }
+    ],
+    "languages": [
+      {
+        "id": "pixiv.novel.text",
+        "extensions": [
+          ".txt",
+          ".pntxt",
+          ".novel"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pixiv.novel.text",
+        "scopeName": "source.pntxt",
+        "path": "./syntaxes/pixiv.novel.text.tmLanguage.json"
+      }
     ]
   },
   "scripts": {

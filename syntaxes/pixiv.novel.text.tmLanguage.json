@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "source.pntxt",
+  "patterns": [{ "include": "#expression" }],
+  "repository": {
+    "expression": {
+      "patterns": [
+        { "include": "#letter" },
+        { "include": "#paren-expression" },
+        { "include": "#single-bracket"},
+        { "include": "#double-bracket"}
+      ]
+    },
+    "letter": {
+      "match": "chapter|newpage|pixivimage|rb|jump(url)?",
+      "name": "keyword.letter"
+    },
+    "paren-expression": {
+      "begin": "\\(",
+      "end": "\\)",
+      "beginCaptures": {
+        "0": { "name": "punctuation.paren.open" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.paren.close" }
+      },
+      "name": "expression.group",
+      "patterns": [{ "include": "#letter" }]
+    },
+    "single-bracket": {
+      "begin": "\\[",
+      "end": "\\]",
+      "beginCaptures": {
+        "0": { "name": "punctuation.bracketSingle.open" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.bracketSingle.close" }
+      },
+      "name": "expression.single-bracket",
+      "patterns": [{ "include": "#letter" }]
+    },
+    "double-bracket": {
+      "begin": "\\[\\[",
+      "end": "\\]\\]",
+      "beginCaptures": {
+        "0": { "name": "punctuation.bracketDouble.open" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.bracketDouble.close" }
+      },
+      "name": "expression.double-bracket",
+      "patterns": [{ "include": "#letter" }]
+    }
+  }
+}
