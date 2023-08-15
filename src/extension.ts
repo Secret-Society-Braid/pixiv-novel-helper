@@ -1,4 +1,4 @@
-import * as vscode from "vscode";
+import { ExtensionContext } from "vscode";
 import {
   CharacterCount,
   CharacterCounterController,
@@ -17,7 +17,7 @@ import {
   openPixivUploadPage,
 } from "./features/commands";
 
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: ExtensionContext) {
   console.log('Activated "pixiv-novel-helper"!');
 
   // character count initialization
