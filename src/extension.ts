@@ -44,6 +44,7 @@ export function activate(context: ExtensionContext) {
     characterCount
   );
 
+  // Register Tree view
   window.createTreeView('novel-view', {
     treeDataProvider: new NovelTreeItemProvider(),
   });
