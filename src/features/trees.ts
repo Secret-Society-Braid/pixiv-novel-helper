@@ -1,16 +1,24 @@
 import { TreeDataProvider, TreeItem, TreeItemCollapsibleState } from "vscode";
+import * as fs from "fs";
 
 export class NovelTreeItemProvider implements TreeDataProvider<FileStructureTreeItem> {
-  getTreeItem(element: any)  {
+  getTreeItem(element: FileStructureTreeItem): TreeItem  {
     return element;
   }
 
-  getChildren(element?: any) {
+  getChildren(element?: any): Thenable<Array<FileStructureTreeItem>> {
     if (!element) {
-      return treeData;
+      return Promise.resolve(treeData);
     } else {
       return element.children;
     }
+  }
+
+  private _getStructureElement(openedFileName: string): Array<FileStructureTreeItem> {
+    const lines = fs.readFileSync(openedFileName, "utf-8").split("\n");
+    const result: Array<FileStructureTreeItem> = [];
+    
+    return result;
   }
 }
 
