@@ -1,67 +1,11 @@
-import * as vscode from "vscode";
+import { TreeDataProvider, TreeItem, TreeItemCollapsibleState } from "vscode";
 
-const treeData =
-  [
-    {
-      label: "root1",
-      collapsibleState: vscode.TreeItemCollapsibleState.Collapsed,
-      children: [
-        {
-          label: "root1/child1",
-          collapsibleState: vscode.TreeItemCollapsibleState.None,
-          command:
-            {
-              command: "oreore.helloWorld",
-              title: "say hello",
-              arguments: []
-            }
-        },
-        {
-          label: "root1/child2",
-          collapsibleState: vscode.TreeItemCollapsibleState.None,
-          command:
-            {
-              command: "oreore.helloWorld",
-              title: "say hello",
-              arguments: []
-            }
-        }
-      ]
-    },
-    {
-      label: "root2",
-      collapsibleState: vscode.TreeItemCollapsibleState.Collapsed,
-      children: [
-        {
-          label: "root2/child1",
-          collapsibleState: vscode.TreeItemCollapsibleState.None,
-          command:
-            {
-              command: "oreore.helloWorld",
-              title: "say hello",
-              arguments: []
-            }
-        },
-        {
-          label: "root2/child2",
-          collapsibleState: vscode.TreeItemCollapsibleState.None,
-          command:
-            {
-              command: "oreore.helloWorld",
-              title: "say hello",
-              arguments: []
-            }
-        }
-      ]
-    }
-  ];
-
-export class NovelTreeItemProvider {
+export class NovelTreeItemProvider implements TreeDataProvider<FileStructureTreeItem> {
   getTreeItem(element: any)  {
     return element;
   }
 
-  getChildren(element: any) {
+  getChildren(element?: any) {
     if (!element) {
       return treeData;
     } else {
@@ -69,3 +13,27 @@ export class NovelTreeItemProvider {
     }
   }
 }
+
+class FileStructureTreeItem extends TreeItem {
+  constructor(
+    public readonly label: string,
+    public readonly collapsibleState: TreeItemCollapsibleState
+  ) {
+    super(label, collapsibleState);
+    this.tooltip = this.label;
+    this.description = this.label;
+  }
+}
+
+const treeData = [
+  {
+    label: "トップ",
+    collapsibleState: TreeItemCollapsibleState.Expanded,
+    children: [
+      {
+        label: "1ページ",
+        collapsibleState: TreeItemCollapsibleState.None,
+      },
+    ],
+  },
+];

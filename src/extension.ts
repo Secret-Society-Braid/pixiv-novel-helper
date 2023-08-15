@@ -1,4 +1,4 @@
-import { ExtensionContext } from "vscode";
+import { ExtensionContext, window } from "vscode";
 import {
   CharacterCount,
   CharacterCounterController,
@@ -16,6 +16,7 @@ import {
   openPixivRequestHome,
   openPixivUploadPage,
 } from "./features/commands";
+import { NovelTreeItemProvider } from "./features/trees";
 
 export function activate(context: ExtensionContext) {
   console.log('Activated "pixiv-novel-helper"!');
@@ -42,6 +43,10 @@ export function activate(context: ExtensionContext) {
     controller,
     characterCount
   );
+
+  window.createTreeView('novel-view', {
+    treeDataProvider: new NovelTreeItemProvider(),
+  });
 }
 
 export function deactivate() {}
