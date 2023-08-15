@@ -66,14 +66,14 @@ export class CharacterCount {
       window
         .showInformationMessage(
           "執筆おつかれさまです。もうすぐで文字数制限に掛かりそうです。これ以上続ける場合は作品の分割をおすすめします。",
+          "このまま執筆を続ける",
           "通知を止める",
-          "このまま執筆を続ける"
         )
         .then((choice) => {
           switch (choice) {
             case "このまま執筆を続ける":
               window.showInformationMessage(
-                "了解しました。執筆がんばってください！"
+                "了解しました。執筆がんばってください！(念のため、通知は送信され続けます。)"
               );
               break;
             case "通知を止める":
