@@ -14,6 +14,12 @@
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "snippets": [
+      {
+        "language": "pixiv.novel.text",
+        "path": "./snippets.json"
+      }
+    ],
     "commands": [
       {
         "command": "pixiv-novel-helper.openPixiv",

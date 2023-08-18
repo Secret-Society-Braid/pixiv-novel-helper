@@ -1,0 +1,50 @@
+{
+  "Add newpage meta syntax": {
+    "scope": "pixiv.novel.text",
+    "prefix": "Newpage",
+    "body": [
+      "[newpage]",
+      "$0"
+    ]
+  },
+  "Add chapter title": {
+    "scope": "pixiv.novel.text",
+    "prefix": "chapter",
+    "body": [
+      "[chapter:${1:chaptertitle}]",
+      "$0"
+    ]
+  },
+  "Add Image with ID": {
+    "scope": "pixiv.novel.text",
+    "prefix": "pixivimage",
+    "body": [
+      "[pixivimage:${1:imageid}]",
+      "$0"
+    ]
+  },
+  "Add In-Page number link": {
+    "scope": "pixiv.novel.text",
+    "prefix": "jump",
+    "body": [
+      "[jump:${1:pagenumber}]",
+      "$0"
+    ]
+  },
+  "Add External link": {
+    "scope": "pixiv.novel.text",
+    "prefix": "jumpurl",
+    "body": [
+      "[[jumpurl:${1:showtitle} > ${2:url/to/link}]]",
+      "$0"
+    ]
+  },
+  "Add ruby text": {
+    "scope": "pixiv.novel.text",
+    "prefix": "ruby",
+    "body": [
+      "[[rb:${1:basetext} > ${2:rubytext}]]",
+      "$0"
+    ]
+  }
+}
