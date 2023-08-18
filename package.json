@@ -59,7 +59,64 @@
         "command": "pixiv-novel-helper.openPixivUploadPage",
         "title": "Open Pixiv upload page"
       }
-    ]
+    ],
+    "languages": [
+      {
+        "id": "pixiv.novel.text",
+        "extensions": [
+          ".txt",
+          ".pntxt",
+          ".novel"
+        ]
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pixiv.novel.text",
+        "scopeName": "source.pntxt",
+        "path": "./syntaxes/pixiv.novel.text.tmLanguage.json"
+      }
+    ],
+    "configurationDefaults": {
+      "editor.tokenColorCustomizations": {
+        "[Default Dark Modern]": {
+          "textMateRules": [
+            {
+              "name": "bracket.open",
+              "scope": "punctuation.bracketSingle.open",
+              "settings": {
+                "foreground": "#5e8498",
+                "fontStyle": ""
+              }
+            },
+            {
+              "name": "bracket.close",
+              "scope": "punctuation.bracketSingle.close",
+              "settings": {
+                "foreground": "#5e8498",
+                "fontStyle": ""
+              }
+            },
+            {
+              "name": "separate-colon",
+              "scope": "keyword.separateColon",
+              "settings": {
+                "foreground": "#99f",
+                "fontStyle": "bold"
+              }
+            },
+            {
+              "name": "target-arrow",
+              "scope": "keyword.targetArrow",
+              "settings": {
+                "foreground": "#FF0000",
+                "fontStyle": "bold"
+              }
+            }
+          ]
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

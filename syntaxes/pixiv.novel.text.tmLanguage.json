@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "source.pntxt",
+  "patterns": [{ "include": "#expression" }],
+  "repository": {
+    "expression": {
+      "patterns": [
+        { "include": "#bracket"}
+      ]
+    },
+    "letter": {
+      "match": "chapter|newpage|pixivimage|rb|jump(url)?",
+      "name": "keyword.letter"
+    },
+    "separate-colon": {
+      "match": ":",
+      "name": "keyword.separateColon"
+    },
+    "target-arrow": {
+      "match": ">",
+      "name": "keyword.targetArrow"
+    },
+    "bracket": {
+      "begin": "\\[(\\[)?",
+      "end": "\\](\\])?",
+      "beginCaptures": {
+        "0": { "name": "punctuation.bracketSingle.open" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.bracketSingle.close" }
+      },
+      "name": "expression.bracket",
+      "patterns": [
+        { "include": "#letter" },
+        { "include": "#separate-colon"},
+        { "include": "#target-arrow"}
+      ]
+    }
+  }
+}
