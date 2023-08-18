@@ -5,51 +5,36 @@
   "repository": {
     "expression": {
       "patterns": [
-        { "include": "#letter" },
-        { "include": "#paren-expression" },
-        { "include": "#single-bracket"},
-        { "include": "#double-bracket"}
+        { "include": "#bracket"}
       ]
     },
     "letter": {
       "match": "chapter|newpage|pixivimage|rb|jump(url)?",
       "name": "keyword.letter"
     },
-    "paren-expression": {
-      "begin": "\\(",
-      "end": "\\)",
-      "beginCaptures": {
-        "0": { "name": "punctuation.paren.open" }
-      },
-      "endCaptures": {
-        "0": { "name": "punctuation.paren.close" }
-      },
-      "name": "expression.group",
-      "patterns": [{ "include": "#letter" }]
+    "separate-colon": {
+      "match": ":",
+      "name": "keyword.separateColon"
     },
-    "single-bracket": {
-      "begin": "\\[",
-      "end": "\\]",
+    "target-arrow": {
+      "match": ">",
+      "name": "keyword.targetArrow"
+    },
+    "bracket": {
+      "begin": "\\[(\\[)?",
+      "end": "\\](\\])?",
       "beginCaptures": {
         "0": { "name": "punctuation.bracketSingle.open" }
       },
       "endCaptures": {
         "0": { "name": "punctuation.bracketSingle.close" }
       },
-      "name": "expression.single-bracket",
-      "patterns": [{ "include": "#letter" }]
-    },
-    "double-bracket": {
-      "begin": "\\[\\[",
-      "end": "\\]\\]",
-      "beginCaptures": {
-        "0": { "name": "punctuation.bracketDouble.open" }
-      },
-      "endCaptures": {
-        "0": { "name": "punctuation.bracketDouble.close" }
-      },
-      "name": "expression.double-bracket",
-      "patterns": [{ "include": "#letter" }]
+      "name": "expression.bracket",
+      "patterns": [
+        { "include": "#letter" },
+        { "include": "#separate-colon"},
+        { "include": "#target-arrow"}
+      ]
     }
   }
 }
