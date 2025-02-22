@@ -14,7 +14,7 @@ export class CharacterCount {
   private readonly _characterLimit: number = 300000;
   private _suppressLimitNotice: boolean = false;
 
-  public updateCharacterCount(): void {
+  public async updateCharacterCount(): Promise<void> {
     if (!this._statueBarItem) {
       this._statueBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
     }
@@ -30,7 +30,7 @@ export class CharacterCount {
       doc.languageId === "plaintext" ||
       doc.languageId === "pixiv.novel.text"
     ) {
-      const characterCount = this._getCharacterCount(doc);
+      const characterCount = await this._getCharacterCount(doc);
       this._statueBarItem.text = `$(pencil) ${characterCount} 文字 / 上限まであと: ${
         this._characterLimit - characterCount
       } 文字`;
@@ -42,17 +42,17 @@ export class CharacterCount {
     }
   }
 
-  private _getCharacterCount(doc: TextDocument): number {
+  private async _getCharacterCount(doc: TextDocument): Promise<number> {
     const docContent = doc.getText();
     return docContent !== "" ? docContent.length : 0;
   }
 
-  public dispose(): void {
+  public async dispose(): Promise<void> {
     this._statueBarItem.dispose();
     this._suppressLimitNotice = false;
   }
 
-  private _noticeCharacterLimitReaching(curr: number): void {
+  private async _noticeCharacterLimitReaching(curr: number): Promise<void> {
     if (this._characterLimit < curr) {
       window.showWarningMessage(
         "文字数制限に掛かっています。このファイルをそのままコピーして投稿することはできない可能性があります。"
@@ -104,11 +104,11 @@ export class CharacterCounterController {
     this._disposable = Disposable.from(...subscriptions);
   }
 
-  private _onEvent() {
+  private async _onEvent(): Promise<void> {
     this._characterCounter.updateCharacterCount();
   }
 
-  public dispose(): void {
+  public async dispose(): Promise<void> {
     this._disposable.dispose();
   }
 }
