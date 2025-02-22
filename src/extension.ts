@@ -17,12 +17,12 @@ import {
   openPixivUploadPage,
 } from "./features/commands";
 
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext): Promise<void> {
   console.log('Activated "pixiv-novel-helper"!');
 
   // character count initialization
-  const characterCount = new CharacterCount();
-  const controller = new CharacterCounterController(characterCount);
+  const characterCount: CharacterCount = new CharacterCount();
+  const controller: CharacterCounterController = new CharacterCounterController(characterCount);
 
   // register to the subscriptions
   context.subscriptions.push(
@@ -44,4 +44,4 @@ export function activate(context: vscode.ExtensionContext) {
   );
 }
 
-export function deactivate() {}
+export async function deactivate(): Promise<void> {}
