@@ -6,9 +6,9 @@ const location: Location = new Location();
 // open pixiv home page
 export const openPixivCommand = commands.registerCommand(
   "pixiv-novel-helper.openPixiv",
-  () => {
+  async () => {
     env.openExternal(
-      Uri.parse(location.construct({ relativePath: undefined }))
+      Uri.parse(await location.construct({ relativePath: undefined }))
     );
   }
 );
@@ -16,28 +16,28 @@ export const openPixivCommand = commands.registerCommand(
 // open dashboard related pages
 export const openPixivDashBoardHome = commands.registerCommand(
   "pixiv-novel-helper.openPixivDashBoardHome",
-  () => {
+  async () => {
     env.openExternal(
-      Uri.parse(location.construct({ relativePath: ["dashboard"] }))
+      Uri.parse(await location.construct({ relativePath: ["dashboard"] }))
     );
   }
 );
 
 export const openPixivDashBoardAllHome = commands.registerCommand(
   "pixiv-novel-helper.openPixivDashBoardAllHome",
-  () => {
+  async () => {
     env.openExternal(
-      Uri.parse(location.construct({ relativePath: ["dashboard", "works"] }))
+      Uri.parse(await location.construct({ relativePath: ["dashboard", "works"] }))
     );
   }
 );
 
 export const openPixivDashBoardAllSeries = commands.registerCommand(
   "pixiv-novel-helper.openPixivDashBoardAllSeries",
-  () => {
+  async () => {
     env.openExternal(
       Uri.parse(
-        location.construct({ relativePath: ["dashboard", "works", "series"] })
+        await location.construct({ relativePath: ["dashboard", "works", "series"] })
       )
     );
   }
@@ -45,10 +45,10 @@ export const openPixivDashBoardAllSeries = commands.registerCommand(
 
 export const openPixivDashBoardAllDrafts = commands.registerCommand(
   "pixiv-novel-helper.openPixivDashBoardAllDrafts",
-  () => {
+  async () => {
     env.openExternal(
       Uri.parse(
-        location.construct({ relativePath: ["dashboard", "works", "drafts"] })
+        await location.construct({ relativePath: ["dashboard", "works", "drafts"] })
       )
     );
   }
@@ -56,10 +56,10 @@ export const openPixivDashBoardAllDrafts = commands.registerCommand(
 
 export const openPixivDashBoardIllustrationsHome = commands.registerCommand(
   "pixiv-novel-helper.openPixivDashBoardIllustrationsHome",
-  () => {
+  async () => {
     env.openExternal(
       Uri.parse(
-        location.construct({
+        await location.construct({
           relativePath: ["dashboard", "works", "illustrations"],
         })
       )
@@ -69,10 +69,10 @@ export const openPixivDashBoardIllustrationsHome = commands.registerCommand(
 
 export const openPixivDashBoardNovelsHome = commands.registerCommand(
   "pixiv-novel-helper.openPixivDashBoardNovelsHome",
-  () => {
+  async () => {
     env.openExternal(
       Uri.parse(
-        location.construct({ relativePath: ["dashboard", "works", "novels"] })
+        await location.construct({ relativePath: ["dashboard", "works", "novels"] })
       )
     );
   }
@@ -80,10 +80,10 @@ export const openPixivDashBoardNovelsHome = commands.registerCommand(
 
 export const openPixivDashBoardNovelsSeries = commands.registerCommand(
   "pixiv-novel-helper.openPixivDashBoardNovelsSeries",
-  () => {
+  async () => {
     env.openExternal(
       Uri.parse(
-        location.construct({
+        await location.construct({
           relativePath: ["dashboard", "works", "novels", "series"],
         })
       )
@@ -93,10 +93,10 @@ export const openPixivDashBoardNovelsSeries = commands.registerCommand(
 
 export const openPixivDashBoardNovelsDrafts = commands.registerCommand(
   "pixiv-novel-helper.openPixivDashBoardNovelsDrafts",
-  () => {
+  async () => {
     env.openExternal(
       Uri.parse(
-        location.construct({
+        await location.construct({
           relativePath: ["dashboard", "works", "novels", "drafts"],
         })
       )
@@ -107,9 +107,9 @@ export const openPixivDashBoardNovelsDrafts = commands.registerCommand(
 // open request related pages
 export const openPixivRequestHome = commands.registerCommand(
   "pixiv-novel-helper.openPixivRequestHome",
-  () => {
+  async () => {
     env.openExternal(
-      Uri.parse(location.construct({ relativePath: ["manage", "requests"] }))
+      Uri.parse(await location.construct({ relativePath: ["manage", "requests"] }))
     );
   }
 );
@@ -118,9 +118,9 @@ export const openPixivRequestHome = commands.registerCommand(
 
 export const openPixivUploadPage = commands.registerCommand(
   "pixiv-novel-helper.openPixivUploadPage",
-  () => {
+  async () => {
     env.openExternal(
-      Uri.parse(location.construct({ relativePath: ["novel", "upload.php"] }))
+      Uri.parse(await location.construct({ relativePath: ["novel", "upload.php"] }))
     );
   }
 );

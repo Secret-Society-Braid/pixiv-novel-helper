@@ -5,11 +5,11 @@ interface LocationOptions {
 export default class Location {
   private readonly url: string = 'https://www.pixiv.net';
 
-  construct(options: LocationOptions): string {
-    return `${this.url}/${this.relativePath(options.relativePath)}`;
+  async construct(options: LocationOptions): Promise<string> {
+    return `${this.url}/${await this.relativePath(options.relativePath)}`;
   }
 
-  private relativePath(relativePath: Array<string> | undefined): string {
+  private async relativePath(relativePath: Array<string> | undefined): Promise<string> {
     if(!relativePath) {return '';}
     return relativePath.join('/');
   }
