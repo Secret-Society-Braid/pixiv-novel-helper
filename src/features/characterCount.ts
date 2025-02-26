@@ -5,6 +5,7 @@ import {
   StatusBarAlignment,
   StatusBarItem,
   TextDocument,
+  TextEditor,
   window,
   workspace,
 } from "vscode";
@@ -18,19 +19,19 @@ export class CharacterCount {
     if (!this._statueBarItem) {
       this._statueBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
     }
-    const editor = window.activeTextEditor;
+    const editor: TextEditor | undefined = window.activeTextEditor;
     if (!editor) {
       this._statueBarItem.hide();
       return;
     }
-    const doc = editor.document;
+    const doc: TextDocument = editor.document;
 
     // count for ".txt" and ".pntxt" files
     if (
       doc.languageId === "plaintext" ||
       doc.languageId === "pixiv.novel.text"
     ) {
-      const characterCount = await this._getCharacterCount(doc);
+      const characterCount: number = await this._getCharacterCount(doc);
       this._statueBarItem.text = `$(pencil) ${characterCount} 文字 / 上限まであと: ${
         this._characterLimit - characterCount
       } 文字`;
@@ -43,7 +44,7 @@ export class CharacterCount {
   }
 
   private async _getCharacterCount(doc: TextDocument): Promise<number> {
-    const docContent = doc.getText();
+    const docContent: string = doc.getText();
     return docContent !== "" ? docContent.length : 0;
   }
 
@@ -69,7 +70,7 @@ export class CharacterCount {
           "このまま執筆を続ける",
           "通知を止める",
         )
-        .then((choice) => {
+        .then((choice: string | undefined): void => {
           switch (choice) {
             case "このまま執筆を続ける":
               window.showInformationMessage(
@@ -97,9 +98,9 @@ export class CharacterCounterController {
     this._characterCounter.updateCharacterCount();
 
     const subscriptions: Disposable[] = [];
-    window.onDidChangeTextEditorSelection(this._onEvent, this, subscriptions);
-    window.onDidChangeActiveTextEditor(this._onEvent, this, subscriptions);
-    workspace.onDidSaveTextDocument(this._onEvent, this, subscriptions);
+    window.onDidChangeTextEditorSelection(this._onEvent.bind(this), this, subscriptions);
+    window.onDidChangeActiveTextEditor(this._onEvent.bind(this), this, subscriptions);
+    workspace.onDidSaveTextDocument(this._onEvent.bind(this), this, subscriptions);
 
     this._disposable = Disposable.from(...subscriptions);
   }
