@@ -17,7 +17,7 @@
     "snippets": [
       {
         "language": "pixiv.novel.text",
-        "path": "./snippets.json"
+        "path": "./snippets/snippets.json"
       }
     ],
     "commands": [
